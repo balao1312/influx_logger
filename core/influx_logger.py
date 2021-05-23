@@ -2,7 +2,7 @@ from pathlib import Path
 import threading
 import pickle
 import json
-from config import config
+from core.config import config
 
 
 class Influx_logger:
@@ -25,7 +25,7 @@ class Influx_logger:
         is_send_to_db = False
 
     try:
-        from credential import db_config
+        from core.credential import db_config
         influxdb_ip = db_config['influxdb_ip']
         influxdb_port = db_config['influxdb_port']
         influxdb_username = db_config['influxdb_username']
