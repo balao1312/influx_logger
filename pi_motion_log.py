@@ -22,11 +22,7 @@ class Motion_Logger(Influx_logger):
             if self.pir.motion_detected:
                 print(f'Motion detected!')
                 ts_string_now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M')
-                try:
-                    self.motion_dict[ts_string_now] += 1
-                except KeyError:
-                    self.motion_dict[ts_string_now] = 1
-
+                self.motion_dict[ts_string_now] = self.motion_dict.get(ts_string_now, 0) + 1
                 print(self.motion_dict)
 
             key_to_delete = []
