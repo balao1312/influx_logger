@@ -30,7 +30,7 @@ class Temp_Humid_Logger(Influx_logger):
         humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
         ts = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
-        if humidity is not None and temperature is not None:
+        if humidity is not None and temperature is not None and humidity < 100:
             print(f'Temp={temperature:0.1f} C  Humidity={humidity:0.1f} %')
             data = {
                 'measurement': 'temp_humid',
